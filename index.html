@@ -4,18 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
   <title>至最爱的小妮子</title>
   <style>
     * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
   html,body {
     height: 100%;
     width: 100%;
+    overflow: hidden;
   }
-  body {
-    background: url('./data/love.jpg') no-repeat;
+  body img {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
+  #money {
+    display: none;
+    z-index: 100;
+  }
+  audio {
+    visibility: hidden;
+  }
+  div {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-left: 5%;
+    padding-top: 5%;
+    z-index: 1;
+    color: #fd6661;
+    font-weight: #fff;
+    line-height: 2;
+  }
+  div p {
+    width: 100%;
+    display: none;
+    /* transform: translateX(-100%); */
   }
   </style>
 </head>
@@ -23,15 +52,37 @@
   <!-- <audio id="video" controls autoplay="autoplay" src="./data/love.mp3">
     你的浏览器不支持播放
   </audio> -->
+  <img src="./data/love.jpg" alt="">
+  <img id="money" src="./data/money.jpeg" alt="">
   <audio controls="controls" autoplay="autoplay">
     <source src="./data/love.mp3" type="audio/mp3" />
   Your browser does not support the audio element.
   </audio>
+  <div>
+    <p>致·亲爱的小妮子</p>
+    <p>生活可以是平淡的</p>
+    <p>犹如蓝天下碧蓝的湖水</p>
+    <p>生活也可以是诗</p>
+    <p>在一路的奔腾中高歌</p>
+    <p>只要我们牵着手</p>
+    <p>每一个日子都是幸福的</p>
+    <p>情人节快乐。</p>
+  </div>
   <!-- <img src="./data/love.jpg" alt=""> -->
 </body>
 </html>
 <script>
-// window.onload = function() {
-//   document.querySelector('#video').play()
-// }
+window.onload = function() {
+  var num = 0
+  var timer = setInterval(() => {
+    if (num > 7) {
+      clearInterval(timer)
+      $('#money').fadeIn(300)
+    } else {
+      $('p').eq(num++).fadeIn(500)
+    }
+
+  }, 2500);
+}
+
 </script>
