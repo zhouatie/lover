@@ -12,7 +12,12 @@
       padding: 0;
       box-sizing: border-box;
     }
-  html,body {
+  html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  body {
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -30,7 +35,14 @@
   audio {
     visibility: hidden;
   }
-  div {
+  #main {
+    height: 100%;
+    width: 100%;
+    background: url('./data/love.jpg') no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+  }
+  div.contain {
     position: fixed;
     left: 0;
     top: 0;
@@ -41,7 +53,7 @@
     font-weight: #fff;
     line-height: 2;
   }
-  div p {
+  div.contain p {
     width: 100%;
     display: none;
     /* transform: translateX(-100%); */
@@ -49,16 +61,17 @@
   </style>
 </head>
 <body>
+  <div id="main">
   <!-- <audio id="video" controls autoplay="autoplay" src="./data/love.mp3">
     你的浏览器不支持播放
   </audio> -->
-  <img src="./data/love.jpg" alt="">
-  <img id="money" src="./data/money.jpeg" alt="">
+  <!-- <img src="./data/love.jpg" alt="">
+  <img id="money" src="./data/money.jpeg" alt=""> -->
   <audio controls="controls" autoplay="autoplay">
     <source src="./data/love.mp3" type="audio/mp3" />
   Your browser does not support the audio element.
   </audio>
-  <div>
+  <div class="contain">
     <p>致·亲爱的小妮子</p>
     <p>生活可以是平淡的</p>
     <p>犹如蓝天下碧蓝的湖水</p>
@@ -68,6 +81,7 @@
     <p>每一个日子都是幸福的</p>
     <p>情人节快乐。</p>
   </div>
+</div>
   <!-- <img src="./data/love.jpg" alt=""> -->
 </body>
 </html>
@@ -77,7 +91,9 @@ window.onload = function() {
   var timer = setInterval(() => {
     if (num > 7) {
       clearInterval(timer)
-      $('#money').fadeIn(300)
+      $('#main').css({
+        backgroundImage: 'url(./data/money.jpeg)'
+      })
     } else {
       $('p').eq(num++).fadeIn(500)
     }
